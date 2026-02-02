@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JEEVA ENTERPRISES – Luxury Sports & Realty</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0b1120;color:#fff;}
+a{text-decoration:none;color:inherit;}
+
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 30px;position:sticky;top:0;z-index:100;
+background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);
+}
+
+/* === LOGO ANIMATION === */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* === 5 SECOND LOOP LOGO ANIMATION === */
+
+.logo-main {
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #f5c97a, #d4af37, #0f766e);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: slideIn 5s infinite;
+}
+
+.logo-sub {
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #cbd5f5;
+
+  animation: fadeIn 5s infinite;
+}
+
+/* Keyframes */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    letter-spacing: 12px;
+  }
+  30% {
+    opacity: 1;
+    letter-spacing: 4px;
+  }
+  80% {
+    opacity: 1;
+    letter-spacing: 4px;
+  }
+  100% {
+    opacity: 0;
+    letter-spacing: 12px;
+  }
+}
+
+
+
+.search input{
+padding:8px 15px;border-radius:25px;border:none;width:220px;
+}
+
+
+
+.hero{
+text-align:center;padding:90px 20px;
+}
+.hero h1{font-size:48px;margin-bottom:15px;}
+.hero p{color:#cbd5f5;font-size:18px;}
+
+section{padding:60px 30px;}
+.section-title{text-align:center;font-size:34px;margin-bottom:40px;}
+
+/* ===== SEXY FILTER CONTROLS ===== */
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin:60px 0 40px;
+  flex-wrap:wrap;
+}
+
+.filters select{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  padding:14px 52px 14px 22px;
+  min-width:190px;
+
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.02)
+    );
+  backdrop-filter: blur(12px);
+
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,0.15);
+
+  color:#e5e7eb;
+  font-weight:600;
+  letter-spacing:0.5px;
+  cursor:pointer;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.05),
+    0 15px 40px rgba(0,0,0,0.5);
+
+  transition:all 0.4s ease;
+
+  /* Custom arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #38bdf8 50%),
+    linear-gradient(135deg, #38bdf8 50%, transparent 50%);
+  background-position:
+    calc(100% - 28px) calc(50% - 4px),
+    calc(100% - 22px) calc(50% - 4px);
+  background-size:6px 6px;
+  background-repeat:no-repeat;
+}
+
+/* Hover */
+.filters select:hover{
+  transform: translateY(-3px);
+  border-color:#38bdf8;
+  box-shadow:
+    0 20px 60px rgba(56,189,248,0.35);
+}
+
+/* Focus */
+.filters select:focus{
+  outline:none;
+  border-color:#6366f1;
+  box-shadow:
+    0 0 0 3px rgba(99,102,241,0.25),
+    0 20px 60px rgba(99,102,241,0.35);
+}
+
+/* Options */
+.filters option{
+  background:#020617;
+  color:#e5e7eb;
+}
+
+
+.products, .properties{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.08),
+    0 25px 60px rgba(0,0,0,0.6);
+
+  transition: all 0.5s ease;
+}
+
+.card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  padding:1px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56,189,248,0.6),
+    transparent
+  );
+  opacity:0;
+  transition:opacity 0.5s;
+}
+
+.card:hover{
+  transform: translateY(-12px) scale(1.02);
+  box-shadow:0 40px 100px rgba(0,0,0,0.8);
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{transform:translateY(-8px);}
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:contain;
+  border-radius:14px;
+  background: radial-gradient(circle,#0b1120,#020617);
+  padding:12px;
+  margin-bottom:18px;
+  transition: transform 0.6s ease;
+}
+
+.card:hover img{
+  transform: scale(1.08) rotate(-1deg);
+}
+
+.card h3{margin-bottom:10px;}
+.card p{font-size:14px;color:#c7d2fe;}
+
+.btn{
+margin-top:15px;display:inline-block;
+background:#25d366;padding:10px 18px;border-radius:20px;font-weight:600;
+}
+
+footer{
+text-align:center;padding:25px;background:#020617;margin-top:50px;
+color:#94a3b8;
+}
+/* ===== MODAL ENQUIRY ===== */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(6px);
+  z-index:999;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-box{
+  width:90%;
+  max-width:420px;
+  background:#020617;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  position:relative;
+}
+
+.modal-box h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.modal-box input,
+.modal-box textarea{
+  width:100%;
+  padding:12px 14px;
+  margin-bottom:14px;
+  border:none;
+  border-radius:10px;
+  background:#0b1120;
+  color:#fff;
+}
+
+.modal-box button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:25px;
+  background:#2563eb;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:18px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* ===== FUTURISTIC HERO TITLE ===== */
+
+.hero-title{
+  font-size: 54px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 1px;
+
+  background: linear-gradient(
+    120deg,
+    #e5c07b,
+    #38bdf8,
+    #6366f1
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 0 20px rgba(99,102,241,0.25),
+    0 0 40px rgba(56,189,248,0.15);
+
+  animation: futuristicGlow 6s ease-in-out infinite;
+}
+
+.hero-title span{
+  color: #94a3b8;
+  margin: 0 6px;
+}
+
+/* Animation */
+@keyframes futuristicGlow{
+  0%{
+    background-position: 0% center;
+  }
+  50%{
+    background-position: 100% center;
+  }
+  100%{
+    background-position: 0% center;
+  }
+}
+
+/* Responsive */
+@media (max-width:768px){
+  .hero-title{
+    font-size: 36px;
+  }
+}
+/* ===== LUXURY CRICKET SECTION ===== */
+
+#cricket {
+  padding: 100px 30px;
+  background: radial-gradient(
+    circle at top,
+    #111827,
+    #020617 70%
+  );
+}
+.luxury-title{
+  font-size:38px;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  margin-bottom:60px;
+  color:#e5e7eb;
+}
+
+.luxury-title::after{
+  content:'';
+  width:80px;
+  height:3px;
+  margin:20px auto 0;
+  display:block;
+  background:linear-gradient(90deg,#f5c97a,#38bdf8);
+}
+
+.enquiry-btn{
+  margin-top:18px;
+  padding:12px 22px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#2563eb,#38bdf8);
+  border:none;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.4s ease;
+}
+
+.enquiry-btn:hover{
+  background:linear-gradient(90deg,#38bdf8,#6366f1);
+  transform:translateY(-2px);
+}
+.luxury-filters{
+  margin-top:-30px;
+  padding-bottom:40px;
+}
+.cricket-filters{
+  display:flex;
+  justify-content:space-between;
+  max-width:900px;
+  margin:30px auto 50px;
+  padding:20px 30px;
+
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(14px);
+  border-radius:20px;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.08),
+    0 25px 60px rgba(0,0,0,0.6);
+}
+
+.price-top{
+  display:flex;
+  justify-content:flex-end;
+  margin:20px 0 30px;
+}
+
+.price-top select{
+  appearance:none;
+  padding:12px 42px 12px 18px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,0.15);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+
+  backdrop-filter: blur(12px);
+  color:#e5e7eb;
+  font-weight:600;
+  cursor:pointer;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6366f1 50%),
+    linear-gradient(135deg, #6366f1 50%, transparent 50%);
+  background-position:
+    calc(100% - 24px) calc(50% - 3px),
+    calc(100% - 18px) calc(50% - 3px);
+  background-size:6px 6px;
+  background-repeat:no-repeat;
+}
+/* ===== TOP NAVIGATION ===== */
+
+.top-nav{
+  display:flex;
+  gap:28px;
+  margin-left:30px;
+}
+
+.top-nav a{
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:0.5px;
+  color:#cbd5f5;
+  text-decoration:none;
+  position:relative;
+  transition:color 0.3s ease;
+}
+
+.top-nav a:hover{
+  color:#38bdf8;
+}
+
+/* Underline effect */
+.top-nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#38bdf8,#6366f1);
+  transition:width 0.3s ease;
+}
+
+.top-nav a:hover::after{
+  width:100%;
+}
+html{
+  scroll-behavior: smooth;
+}
+/* ===== ELEGANT CATEGORY SELECT ===== */
+
+.category-top select{
+  appearance:none;
+  padding:12px 44px 12px 20px;
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,0.18);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.1),
+      rgba(255,255,255,0.03)
+    );
+  backdrop-filter: blur(12px);
+
+  color:#e5e7eb;
+  font-weight:600;
+  letter-spacing:0.4px;
+  cursor:pointer;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.05),
+    0 12px 30px rgba(0,0,0,0.6);
+
+  transition:all 0.35s ease;
+
+  /* minimal arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #94a3b8 50%),
+    linear-gradient(135deg, #94a3b8 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) 50%,
+    calc(100% - 16px) 50%;
+  background-size:6px 6px;
+  background-repeat:no-repeat;
+}
+
+/* Hover = subtle confidence */
+.category-top select:hover{
+  border-color:#38bdf8;
+  box-shadow:0 16px 40px rgba(56,189,248,0.25);
+}
+
+/* Option list */
+.category-top option{
+  background:#020617;
+  color:#e5e7eb;
+}
+
+
+
+
+</style>
+</head>
+<script>
+function openEnquiry(name){
+  document.getElementById('enquiryModal').style.display = 'flex';
+  document.getElementById('productName').value = name;
+}
+
+function closeEnquiry(){
+  document.getElementById('enquiryModal').style.display = 'none';
+}
+</script>
+
+
+<body>
+
+<header>
+<div class="logo">
+  <span class="logo-main">JEEVA</span>
+  <span class="logo-sub">ENTERPRISES</span>
+</div>
+<nav class="top-nav">
+  <a href="#cricket">Cricket Equipment</a>
+  <a href="#solar">Solar Energy Solutions</a>
+  <a href="#real-estate">Real Estate</a>
+</nav>
+
+
+<div class="search">
+<input type="text" placeholder="Search products or properties...">
+</div>
+
+</header>
+
+<div class="hero">
+<h1 class="hero-title">
+  Luxury Cricket Gear <span>&</span> Smart Realty
+</h1>
+<p>Premium sports equipment and professional property solutions</p>
+</div>
+
+<section>
+<section id="cricket">
+  <h2 class="section-title luxury-title">Cricket Equipment</h2>
+
+<div class="price-top">
+  <select>
+    <option selected>Price Range</option>
+    <option>Budget</option>
+    <option>Premium</option>
+  </select>
+</div>
+
+<div class="products">
+<div class="card">
+<img src="premium-gloves.jpg" alt="Premium Cricket Gloves" />
+<h3>Premium Cricket Gloves</h3>
+<p>Professional grip, elite leather quality.</p>
+<button class="enquiry-btn">Enquire Now</button>
+
+</div>
+
+
+<div class="card">
+<img src="english-willow-bat.jpg" alt="English Willow Bat" />
+<h3>English Willow Bat</h3>
+<p>Match-grade power and balance.</p>
+<button class="enquiry-btn">Enquire Now</button>
+</div>
+
+<div class="card">
+<img src="leather-cricket-ball.jpg" alt="Leather Cricket Ball" />
+<h3>Leather Cricket Ball</h3>
+<p>Professional swing and durability.</p>
+<button class="enquiry-btn">Enquire Now</button>
+
+</div>
+</div>
+</section>
+
+<!-- SOLAR BUSINESS SECTION -->
+<section id="solar">
+  <h2 class="section-title luxury-title">Solar Energy Solutions</h2>
+
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Rooftop Solar Panel">
+      <h3>Rooftop Solar Installation</h3>
+      <p>High-efficiency solar systems for homes & businesses.</p>
+      <button class="enquiry-btn" onclick="openEnquiry('Rooftop Solar Installation')">
+        Enquire Now
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d" alt="Industrial Solar">
+      <h3>Commercial & Industrial Solar</h3>
+      <p>Large-scale solar solutions with maximum ROI.</p>
+      <button class="enquiry-btn" onclick="openEnquiry('Commercial Solar Solutions')">
+        Enquire Now
+      </button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581092919530-bc1f7c1c9b1d" alt="Solar Maintenance">
+      <h3>Solar Maintenance & AMC</h3>
+      <p>Long-term performance monitoring and maintenance.</p>
+      <button class="enquiry-btn" onclick="openEnquiry('Solar Maintenance Services')">
+        Enquire Now
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="real-estate">
+<h2 class="section-title luxury-title">Real Estate</h2>
+
+
+<div class="properties">
+<div class="card">
+<img src="1bhk.jpg" alt="1BHK Luxury Apartment" />
+<h3>1BHK Luxury Apartment</h3>
+<p>550–650 sq.ft • Ideal for professionals</p>
+<button class="enquiry-btn">Enquire Now</button>
+
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" />
+<h3>2BHK Premium Home</h3>
+<p>850–1000 sq.ft • Ideal for families</p>
+<button class="enquiry-btn" onclick="openEnquiry('2BHK Premium Home')">
+  Enquire Now
+</button>
+
+
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 JEEVA ENTERPRISES • Luxury Business Website Demo
+</footer>
+<!-- ENQUIRY MODAL -->
+<div id="enquiryModal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeEnquiry()">×</span>
+
+    <h2>Send Enquiry</h2>
+
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="text" id="productName" readonly>
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Submit Enquiry</button>
+    </form>
+  </div>
+</div>
+
+
+
+</body>
+</html>
